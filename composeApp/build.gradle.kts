@@ -61,6 +61,8 @@ kotlin {
             implementation(libs.multiplatformSettings)
             implementation(libs.kotlinx.datetime)
             implementation(libs.room.runtime)
+            implementation(libs.compose.viewmodel)
+            implementation(libs.compose.navigation)
         }
 
         commonTest.dependencies {
@@ -92,11 +94,11 @@ kotlin {
 
 android {
     namespace = "org.kzerkovich.pulse"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 35
+        targetSdk = 36
 
         applicationId = "org.kzerkovich.pulse.androidApp"
         versionCode = 1

@@ -1,0 +1,8 @@
+package org.kzerkovich.pulse.navigation.main
+
+import androidx.compose.runtime.Composable
+
+@Composable
+fun MainScreen() {
+
+}
