@@ -116,7 +116,7 @@ internal fun LoginView(
 
                     },
 
-            ) {
+                ) {
                 Text(
                     modifier = Modifier.align(Alignment.Center),
                     text = stringResource(Res.string.login_forgot_password),
@@ -145,7 +145,7 @@ internal fun LoginView(
 
         Row {
             Text(
-                modifier = Modifier.padding(top = 4.dp, bottom = 12.dp, start = 16.dp,),
+                modifier = Modifier.padding(top = 4.dp, bottom = 12.dp, start = 16.dp),
                 text = stringResource(Res.string.login_register),
                 color = PulseTheme.colors.tintColor,
                 fontWeight = FontWeight.Light
@@ -153,7 +153,7 @@ internal fun LoginView(
 
             Text(
                 modifier = Modifier
-                    .padding(top = 4.dp, bottom = 12.dp,end = 16.dp)
+                    .padding(top = 4.dp, bottom = 10.dp, end = 16.dp)
                     .clip(RoundedCornerShape(12.dp))
                     .clickable {
 
@@ -171,10 +171,7 @@ internal fun LoginView(
 internal fun LoginViewPreview() {
     AppTheme {
         LoginView(
-            viewState = LoginViewState(
-                emailValue = "test@example.com",
-                passwordValue = "pass"
-            ),
+            viewState = LoginViewState(),
             eventHandler = {}
         )
     }
