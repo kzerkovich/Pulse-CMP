@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.kzerkovich.pulse.common.CommonTextField
+import org.kzerkovich.pulse.common.textfield.CommonTextField
 import org.kzerkovich.pulse.features.login.models.LoginEvent
 import org.kzerkovich.pulse.features.login.models.LoginViewState
 import org.kzerkovich.pulse.theme.AppTheme

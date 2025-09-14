@@ -30,6 +30,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import org.jetbrains.compose.resources.stringResource
 import org.kzerkovich.pulse.features.feed.FeedScreen
+import org.kzerkovich.pulse.features.profile.ui.ProfileScreen
+import org.kzerkovich.pulse.features.profile.ui.ProfileView
 import org.kzerkovich.pulse.navigation.LocalNavHost
 import org.kzerkovich.pulse.theme.PulseTheme
 import pulse.composeapp.generated.resources.Res
@@ -68,7 +70,7 @@ fun MainScreen() {
                 FeedScreen()
             }
             composable(MainScreens.Subscriptions.route) {
-                Text("Hello, subscriptions")
+                ProfileScreen()
             }
             composable(MainScreens.Inbox.route) {
                 Text("Hello, inbox")
