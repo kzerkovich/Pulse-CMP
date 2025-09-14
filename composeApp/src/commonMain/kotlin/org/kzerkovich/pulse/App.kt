@@ -13,6 +13,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.kzerkovich.pulse.features.create.CreatePostScreen
 import org.kzerkovich.pulse.features.login.LoginScreen
 import org.kzerkovich.pulse.features.paywall.PaywallScreen
+import org.kzerkovich.pulse.features.splash.SplashScreen
 import org.kzerkovich.pulse.navigation.LocalNavHost
 import org.kzerkovich.pulse.navigation.main.MainScreen
 import org.kzerkovich.pulse.theme.AppTheme
@@ -35,8 +36,11 @@ internal fun PulseApp(
     ) {
         NavHost(
             navController = navController,
-            startDestination = currentScreen
+            startDestination = AppScreens.Splash.title
         ) {
+            composable(route = AppScreens.Splash.title) {
+                SplashScreen(navController = navController)
+            }
             composable(route = AppScreens.Login.title) {
                 LoginScreen()
             }
@@ -52,3 +56,5 @@ internal fun PulseApp(
         }
     }
 }
+
+internal expect fun openUrl(url: String?)

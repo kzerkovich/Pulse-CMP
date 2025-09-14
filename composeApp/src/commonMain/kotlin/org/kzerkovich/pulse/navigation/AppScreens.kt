@@ -2,5 +2,6 @@ enum class AppScreens(val title: String) {
     Login("login"),
     Main("main"),
     CreatePost("create_post"),
-    Paywall("paywall")
+    Paywall("paywall"),
+    Splash("splash")
 }

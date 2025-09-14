@@ -21,7 +21,7 @@ fun LoginScreen(
 
     when (viewAction) {
         LoginAction.OpenMainScreen -> {
-
+            externalNavHost.navigate(AppScreens.Main.title)
             loginViewModel.clearAction()
         }
 

@@ -46,6 +46,7 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.foundation)
             implementation(compose.material3)
+            implementation(compose.material)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.kotlinx.coroutines.core)
@@ -61,6 +62,7 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.compose.viewmodel)
             implementation(libs.compose.navigation)
+            implementation(libs.material.icons.core)
         }
 
         commonTest.dependencies {

@@ -131,7 +131,7 @@ internal fun LoginView(
                     .size(84.dp, 40.dp)
                     .clip(RoundedCornerShape(12.dp))
                     .clickable {
-
+                        eventHandler.invoke(LoginEvent.LoginClicked)
                     },
             ) {
                 Text(
@@ -153,10 +153,10 @@ internal fun LoginView(
 
             Text(
                 modifier = Modifier
-                    .padding(top = 4.dp, bottom = 10.dp, end = 16.dp)
+                    .padding(top = 4.dp, bottom = 12.dp, end = 16.dp)
                     .clip(RoundedCornerShape(12.dp))
                     .clickable {
-
+                        eventHandler.invoke(LoginEvent.SignUpClicked)
                     },
                 text = stringResource(Res.string.login_sign_up),
                 color = PulseTheme.colors.tintColor,

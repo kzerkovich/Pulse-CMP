@@ -12,7 +12,16 @@ class LoginViewModel :
         when (viewEvent) {
             is LoginEvent.EmailChanged -> viewState = viewState.copy(emailValue = viewEvent.newValue)
             is LoginEvent.PasswordChanged -> viewState = viewState.copy(passwordValue = viewEvent.newValue)
+            LoginEvent.LoginClicked -> loginClicked()
+            LoginEvent.SignUpClicked -> signUpClicked()
         }
     }
 
+    private fun loginClicked() {
+        viewAction = LoginAction.OpenMainScreen
+    }
+
+    private fun signUpClicked() {
+
+    }
 }
