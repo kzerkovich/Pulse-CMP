@@ -16,6 +16,8 @@ kotlinx-datetime = "0.7.1"
 ksp = "2.2.20-RC-2.0.2"
 compose-viewmodel = "2.9.3"
 nav-compose = "2.9.0-rc02"
+room = "2.8.0"
+sqlite = "2.6.0"
 
 [libraries]
 
@@ -40,13 +42,17 @@ ktor-client-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }
 ktor-client-curl = { module = "io.ktor:ktor-client-curl", version.ref = "ktor" }
 ktor-client-winhttp = { module = "io.ktor:ktor-client-winhttp", version.ref = "ktor" }
 
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
+room-sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
+
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
+kotlinx-uuid = { module = "app.softwork:kotlinx-uuid-core", version = "0.1.6" }
 kodein = { module = "org.kodein.di:kodein-di", version.ref = "kodein" }
 
 composeImageLoader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "composeImageLoader" }
-
-
 
 material-icons-core = { module = "org.jetbrains.compose.material:material-icons-core", version.ref = "materialIconsCore" }
 multiplatformSettings = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "multiplatformSettings" }
@@ -65,4 +71,5 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }
 

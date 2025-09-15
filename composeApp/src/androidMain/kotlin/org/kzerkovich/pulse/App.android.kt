@@ -8,6 +8,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.net.toUri
+import org.kzerkovich.pulse.core.database.AppDatabase
+import org.kzerkovich.pulse.core.database.getDataBaseBuilder
+import org.kzerkovich.pulse.core.database.getRoomDatabase
+import org.kzerkovich.pulse.core.di.InjectProvider
 
 class AndroidApp : Application() {
     companion object {
@@ -24,6 +28,13 @@ class AppActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val appDatabase = getRoomDatabase(
+            getDataBaseBuilder(applicationContext)
+        )
+
+        InjectProvider.addDependency("database", appDatabase)
+
         setContent { App() }
     }
 }

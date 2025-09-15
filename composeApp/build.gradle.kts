@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -19,15 +20,15 @@ kotlin {
 
     jvm()
 
-    js {
-        browser()
-        binaries.executable()
-    }
-
-    wasmJs {
-        browser()
-        binaries.executable()
-    }
+//    js {
+//        browser()
+//        binaries.executable()
+//    }
+//
+//    wasmJs {
+//        browser()
+//        binaries.executable()
+//    }
 
     listOf(
         iosX64(),
@@ -63,6 +64,12 @@ kotlin {
             implementation(libs.compose.viewmodel)
             implementation(libs.compose.navigation)
             implementation(libs.material.icons.core)
+
+            implementation(libs.room.runtime)
+            implementation(libs.room.sqlite.bundled)
+            implementation(libs.room.sqlite)
+
+            implementation(libs.kotlinx.uuid)
         }
 
         commonTest.dependencies {
@@ -97,7 +104,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 23
         targetSdk = 36
 
         applicationId = "org.kzerkovich.pulse.androidApp"
@@ -137,3 +144,15 @@ compose.desktop {
     }
 }
 
+dependencies {
+    add("kspCommonMainMetadata", libs.room.compiler)
+    add("kspAndroid", libs.room.compiler)
+    add("kspIosX64", libs.room.compiler)
+    add("kspIosArm64", libs.room.compiler)
+    add("kspIosSimulatorArm64", libs.room.compiler)
+    add("kspJvm", libs.room.compiler)
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
+}
