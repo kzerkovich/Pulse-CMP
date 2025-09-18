@@ -1,36 +1,70 @@
 package org.kzerkovich.pulse.features.feed.presentation
 
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.kzerkovich.pulse.base.BaseViewModel
+import org.kzerkovich.pulse.features.feed.domain.GetFeedUseCase
 import org.kzerkovich.pulse.features.feed.presentation.models.FeedAction
 import org.kzerkovich.pulse.features.feed.presentation.models.FeedEvent
 import org.kzerkovich.pulse.features.feed.presentation.models.FeedViewState
-import org.kzerkovich.pulse.features.feed.ui.views.models.FilterCellModel
+import org.kzerkovich.pulse.features.feed.presentation.views.FeedCellModel
 
 class FeedViewModel :
     BaseViewModel<FeedViewState, FeedAction, FeedEvent>(initialState = FeedViewState()) {
+
+    private val getFeedUseCase = GetFeedUseCase()
 
     init {
         loadScreen()
     }
 
-    private fun loadScreen() {
-        viewState = viewState.copy(
-            filters = listOf(
-                FilterCellModel("one", "one" == viewState.currentChipSelected),
-                FilterCellModel("two", "two" == viewState.currentChipSelected),
-                FilterCellModel("three", "three" == viewState.currentChipSelected),
-            )
-        )
-    }
-
     override fun obtainEvent(viewEvent: FeedEvent) {
         when (viewEvent) {
-            is FeedEvent.ClickItemFilter -> handleClickItemFilter(viewEvent.type)
+            is FeedEvent.FilterClicked -> filterContent(viewEvent.filterId)
+            is FeedEvent.PostClicked -> obtainPostClick(viewEvent.postId)
+            FeedEvent.UserClicked -> showUserProfile()
+            FeedEvent.LoadMore -> loadMoreFeed()
         }
     }
 
-    private fun handleClickItemFilter(type: String) {
-        viewState = viewState.copy(currentChipSelected = type)
-        loadScreen()
+    private fun loadScreen() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val feed = getFeedUseCase.execute()
+                .map {
+                    FeedCellModel(
+                        postId = it.postId,
+                        imageUrl = "",
+                        title = it.title,
+                        category = it.topics.joinToString(separator = ", "),
+                        socialInfo = "${it.likesCount} likes / ${it.repostCount} reposts",
+                        hasBlur = it.postId == "1"
+                    )
+                }
+
+            withContext(Dispatchers.Main) {
+                viewState = viewState.copy(
+                    feed = feed
+                )
+            }
+        }
+    }
+
+    private fun filterContent(filterId: String) {
+
+    }
+
+    private fun obtainPostClick(postId: String) {
+
+    }
+
+    private fun showUserProfile() {
+
+    }
+
+    private fun loadMoreFeed() {
+
     }
 }
